@@ -15,7 +15,8 @@
 			<%= link_to "Favourite", "#" %>
 		</span>
 	</div>
-	<small class="info">
+	<small class="timestamp">
 		Posted <%= time_ago_in_words(post.created_at) %> ago.
 	</small>
+	<%= render 'comments/form', post: post %>
 </li>

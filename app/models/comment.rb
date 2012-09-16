@@ -4,4 +4,7 @@ class Comment
 	#relation
 	belongs_to :user
 	belongs_to :post
+
+	#attributes
+	field :content, type: String
 end
