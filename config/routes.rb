@@ -5,6 +5,10 @@ Vuicuoilen::Application.routes.draw do
 
   resources :posts do
     resources :comments
+    member do
+      get :favourite
+      get :vote
+    end
   end
 
   # resources :posts

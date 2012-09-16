@@ -10,5 +10,6 @@ class Post
 
 	#attributes
 	field :content, type: String
-	field :voted_user_ids, type: Array, default: []
+	field :voteup_user_ids, type: Array, default: []
+	field :votedown_user_ids, type: Array, default: []
 end

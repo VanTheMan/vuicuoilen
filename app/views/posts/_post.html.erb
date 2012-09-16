@@ -4,16 +4,27 @@
 		<%= link_to post.content, post_path(post) %> 
 	</div>
 	<div class="action">
-		<span class="comment">
-			<%= link_to "Comment("+ post.comments.count.to_s + ")", "#" %>
-		</span>
-		<span class="vote">
-			<%= link_to "VCL" , "#" %>
-			<%= link_to "Chem gio" , "#" %>
-		</span>
-		<span class="favourite">
-			<%= link_to "Favourite", "#" %>
-		</span>
+		<small class="comment">
+			<%= link_to "Comment("+ post.comments.count.to_s + ")", "#" %> &middot;
+		</small>
+		<small class="vote">
+			<% if user_signed_in? && voted?(post) %>
+				<%= "VCL("+ post.voteup_user_ids.count.to_s + ")" %> &middot;
+				<%= "Chem gio("+ post.votedown_user_ids.count.to_s + ")" %> &middot;
+			<% else %>
+				<%= link_to "VCL("+ post.voteup_user_ids.count.to_s + ")" ,
+					vote_post_path(post, :vote => "up") %> &middot;
+				<%= link_to "Chem gio("+ post.votedown_user_ids.count.to_s + ")" ,
+					vote_post_path(post, :vote => "down") %> &middot;
+			<% end %>
+		</small>
+		<small class="favourite">
+			<% if favourited?(post) %>
+				<%= link_to "Remove Favourite", favourite_post_path(post) %>
+			<% else %>
+				<%= link_to "Favourite", favourite_post_path(post) %>
+			<% end%>
+		</small>
 	</div>
 	<small class="timestamp">
 		Posted <%= time_ago_in_words(post.created_at) %> ago.
