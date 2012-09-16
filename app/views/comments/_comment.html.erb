@@ -1,0 +1,11 @@
+<strong><%= comment.user.email %></strong>
+
+<div class="content">
+	<%= comment.content %>
+</div>
+
+<small class="timestamp">
+	about <%= time_ago_in_words(comment.created_at) %> ago.
+</small>
+
+</br>

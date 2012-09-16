@@ -1,5 +1,6 @@
 class Comment
 	include Mongoid::Document
+	include Mongoid::Timestamps
 	
 	#relation
 	belongs_to :user

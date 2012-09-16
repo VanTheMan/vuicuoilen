@@ -1,5 +1,14 @@
 @import "bootstrap";
 
+$grayMediumLight: #eaeaea;
+
 body {
   padding-top: 60px;
+}
+
+.content{
+	a{
+		color: $gray;
+		text-decoration: none;
+	}
 }
