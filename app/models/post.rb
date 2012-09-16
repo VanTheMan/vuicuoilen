@@ -1,5 +1,6 @@
 class Post
 	include Mongoid::Document
+	include Mongoid::Timestamps
 
 	#relation with other models
 	has_many :comments, dependent: :destroy

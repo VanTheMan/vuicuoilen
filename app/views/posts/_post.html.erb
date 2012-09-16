@@ -1,3 +1,21 @@
 <li>
-	<%= post.content %> 
+	<strong><%= post.user.email %></strong>
+	<div class="content">
+		<%= post.content %> 
+	</div>
+	<div class="action">
+		<span class="comment">
+			<%= link_to "Comment("+ post.comments.count.to_s + ")", "#" %>
+		</span>
+		<span class="vote">
+			<%= link_to "VCL" , "#" %>
+			<%= link_to "Chem gio" , "#" %>
+		</span>
+		<span class="favourite">
+			<%= link_to "Favourite", "#" %>
+		</span>
+	</div>
+	<small class="info">
+		Posted <%= time_ago_in_words(post.created_at) %> ago.
+	</small>
 </li>
