@@ -8,5 +8,5 @@ class Post
 	has_and_belongs_to_many :favourite_users, class_name: "User", inverse_of: :favourite_posts
 	
 	#attributes
-
+	field :content, type: String
 end
