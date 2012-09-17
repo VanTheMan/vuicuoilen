@@ -12,4 +12,24 @@ class Post
 	field :content, type: String
 	field :voteup_user_ids, type: Array, default: []
 	field :votedown_user_ids, type: Array, default: []
+
+	def unfavourite_user(user)
+    	self.favourite_user_ids.delete(user.id)
+    	save
+    end
+
+    def favourite_user(user)
+    	self.favourite_users << user
+    	save
+    end
+
+    def vote_up(user)
+    	self.voteup_user_ids << user.id
+    	save
+    end
+
+    def vote_down
+    	self.votedown_user_ids << user.id
+    	save
+    end
 end

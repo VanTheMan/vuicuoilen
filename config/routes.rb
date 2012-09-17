@@ -7,6 +7,7 @@ Vuicuoilen::Application.routes.draw do
     resources :comments
     member do
       get :favourite
+      get :unfavourite
       get :vote
     end
   end

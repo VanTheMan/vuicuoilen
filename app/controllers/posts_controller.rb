@@ -39,33 +39,28 @@ class PostsController < ApplicationController
 
 	def favourite
 		@post = Post.find(params[:id])
-		if favourited?(@post)
-			binding.pry
-			current_user.favourite_post_ids - [@post.id]
-			current_user.save
-			@post.favourite_user_ids - [current_user.id]
-			@post.save
-			redirect_to posts_path
-		else
-			@post.favourite_users << current_user
-			@post.save
-			redirect_to posts_path
-		end	
+		@post.favourite_user(current_user)
+		redirect_to posts_path
+	end
+
+	def unfavourite
+		@post = Post.find(params[:id])
+		current_user.unfavourite_post(@post)
+		@post.unfavourite_user(current_user)
+		redirect_to posts_path
 	end
 
 	def vote
 		@post = Post.find(params[:id])
 
-		# binding.pry
 		if voted?(@post)
 			redirect_to posts_path
 		else
 			if params[:vote] == "up"
-				@post.voteup_user_ids << current_user.id
+				@post.vote_up(current_user)
 			elsif params[:vote] == "down"
-				@post.votedown_user_ids << current_user.id
+				@post.vote_down(current_user)
 			end
-			@post.save
 			redirect_to posts_path
 		end
 	end

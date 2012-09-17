@@ -21,7 +21,7 @@
 			</small>
 			<small class="favourite">
 				<% if favourited?(post) %>
-					<%= link_to "Remove Favourite", favourite_post_path(post) %>
+					<%= link_to "Remove Favourite", unfavourite_post_path(post) %>
 				<% else %>
 					<%= link_to "Favourite", favourite_post_path(post) %>
 				<% end%>

@@ -51,4 +51,8 @@ class User
 	has_and_belongs_to_many :friends, class_name: "User", inverse_of: :friend_ofs
 	has_and_belongs_to_many :friend_ofs, class_name: "User", inverse_of: :friends
 	
+  def unfavourite_post(post)
+    self.favourite_post_ids.delete(post.id)
+    save
+  end
 end
